@@ -1,0 +1,19 @@
+@(title: String, products: List[dtos.ProductDto])
+
+<html>
+    <head>
+        <title>Products</title>
+    </head>
+    <body>
+        <div>
+            <h1>@title</h1>
+            <ul>
+                @for(product <- products) {
+                    <li>
+                        <a href="@routes.Product.detail(product.code)">@product.name for @product.price $</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </body>
+</html>

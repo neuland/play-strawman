@@ -1,0 +1,21 @@
+@(product: dtos.ProductDto)
+
+<html>
+    <head>
+        <title>@product.name</title>
+    </head>
+    <body>
+        <div>
+            <h1>@product.name</h1>
+            <div>Articlenumber: @product.code</div>
+            <br />
+            <div>
+                <b>Price: @product.price $</b>
+            </div>
+            <br />
+            <div>
+                <a href="@routes.Product.index()">Back to overview</a>
+            </div>
+        </div>
+    </body>
+</html>
