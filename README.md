@@ -4,28 +4,13 @@ Strawman Plugin for Play 2.0
 ## Contents
 
 - [Installation](#installation)
-- [Example](#example)
 - [Usage](#usage)
 - [Authors](#authors)
 - [License](#license)
 
 ## Installation
 
-The module is published to [Github](https://github.com/Honigbaum/releases/tree/master/neuland-play-plugin-strawman_2.10). Play framework 2.x installation: 
-
-Add a new resolver for dependencies and the dependency to your ```build.sbt```:
-
-```
-resolvers += Resolver.url("GitHub Play Repository", url("http://github.com/Honigbaum/releases/"))(Resolver.ivyStylePatterns)
-
-libraryDependencies ++= Seq(
-  "de.neuland" %% "neuland-play-plugin-strawman" % "1.0"
-)
-```
-
-Add ```1000:de.neuland.play.strawman.StrawmanPlugin``` to your ```conf/play.plugins```
-
-The following parameters can be configured in ```conf/application.conf```
+Select released version from ```../releases``` folder and copy jar to ```lib```. Configure following parameters in ```conf/application.conf```
 
 ```
 # Strawman configuration

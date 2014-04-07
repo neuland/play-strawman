@@ -3,12 +3,12 @@ package de.neuland.play.strawman
 import play.api.{Logger, Play}
 import play.api.Play.current
 
-class StrawmanPlugin(application: play.Application) extends play.Plugin {
+object StrawmanPlugin {
 
   private val defaultConfigurationClass = "strawman.StrawmanPages"
   private val isActive: Boolean = loadConfiguration
 
-  override def enabled(): Boolean = {
+  def enabled(): Boolean = {
     isActive
   }
 
