@@ -5,8 +5,8 @@ import views.{html => h}
 import strawman.{StrawmanRepository => repo}
 import dtos.ProductDto
 
-class StrawmanPages extends de.neuland.play.strawman.StrawmanConfig  {
-  override val strawmanPages: Map[String, Map[String, Html]] = Map(
+class StrawmanPages  {
+  def apply: Map[String, Map[String, Html]] = Map(
 
     "Articleoverview" -> Map(
       "/products" -> h.index("Fakeproducts Overview", repo.Product.all)

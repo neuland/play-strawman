@@ -2,6 +2,7 @@ package de.neuland.play.strawman
 
 import play.api.{Logger, Play}
 import play.api.Play.current
+import play.api.templates.Html
 
 object StrawmanPlugin {
 
@@ -21,11 +22,12 @@ object StrawmanPlugin {
     val configurationClassName = getConfigurationClassName()
 
     try {
-      StrawmanConfig.setConfig(Play.classloader.loadClass(configurationClassName).newInstance().asInstanceOf[StrawmanConfig])
+      val newInstance = Play.classloader.loadClass(configurationClassName).newInstance()
+      val applyMethod = Play.classloader.loadClass(configurationClassName).getDeclaredMethod("apply")
+      StrawmanConfig.strawmanPages = applyMethod.invoke(newInstance).asInstanceOf[Map[String, Map[String, Html]]]
       configurationLoaded = true
     } catch {
-      case e: ClassNotFoundException => Logger.error("Configuration class '%s' not found. Disabling Strawman ...".format(configurationClassName));
-      case e: Exception => Logger.error("Configuration class '%s' must extend 'de.neuland.play.strawman.StrawmanConfig'. Disabling Strawman ...".format(configurationClassName));
+      case e: Exception => Logger.error("Error loading Configuration class '%s'. See documentation for correct format. Disabling Strawman ...".format(configurationClassName));
     }
 
     configurationLoaded
@@ -40,5 +42,6 @@ object StrawmanPlugin {
       }
     }
   }
+
 }
 

@@ -2,9 +2,9 @@ package de.neuland.play.strawman
 
 import play.api.templates.Html
 
-trait StrawmanConfig {
+protected object StrawmanConfig {
 
-  val strawmanPages: Map[String, Map[String, Html]]
+  var strawmanPages: Map[String, Map[String, Html]] = _
 
   final def overview: Map[String, Set[String]] = {
     strawmanPages.mapValues((a: Map[String, Html]) => a.keySet)
@@ -18,18 +18,3 @@ trait StrawmanConfig {
   }
 
 }
-
-object StrawmanConfig {
-
-  private var config: StrawmanConfig = null
-
-  def setConfig(configuration: StrawmanConfig) = {
-    config = configuration
-  }
-
-  def apply(): StrawmanConfig = {
-    config
-  }
-
-}
-
