@@ -15,7 +15,7 @@ object StrawmanController extends Controller {
       case Some(html) => Ok(html)
       case None => {
         Logger.warn("No strawman configuration found for path '%s'. Redirecting to index ...".format(url))
-        Redirect("/")
+        Redirect("/i")
       }
     }
   }
