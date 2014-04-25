@@ -1,6 +1,6 @@
 name := "neuland-play-plugin-strawman"
 
-version := "0.3"
+version := "0.4"
 
 organization := "de.neuland"
 
