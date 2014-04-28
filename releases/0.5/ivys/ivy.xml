@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-	<info organisation="de.neuland" module="neuland-play-plugin-strawman_2.10" revision="0.4" status="release" publication="20140428111015">
+	<info organisation="de.neuland" module="neuland-play-plugin-strawman_2.10" revision="0.5" status="release" publication="20140428112435">
 		<description>
 		neuland-play-plugin-strawman
 		</description>

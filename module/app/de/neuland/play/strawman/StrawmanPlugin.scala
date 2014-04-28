@@ -19,17 +19,22 @@ object StrawmanPlugin {
 
   private def loadConfigurationClass: Boolean = {
     var configurationLoaded = false
-    val configurationClassName = getConfigurationClassName()
 
-    try {
-      val newInstance = Play.classloader.loadClass(configurationClassName).newInstance()
-      val applyMethod = Play.classloader.loadClass(configurationClassName).getDeclaredMethod("apply")
-      StrawmanConfig.strawmanPages = applyMethod.invoke(newInstance).asInstanceOf[Map[String, Map[String, Html]]]
-      configurationLoaded = true
-    } catch {
-      case e: Exception => Logger.error("Error loading Configuration class '%s'. See documentation for correct format. Disabling Strawman ...".format(configurationClassName));
+    StrawmanConfig.strawmanPages = () => {
+      val configurationClassName = getConfigurationClassName()
+      try {
+        val newInstance = Play.classloader.loadClass(configurationClassName).newInstance()
+        val applyMethod = Play.classloader.loadClass(configurationClassName).getDeclaredMethod("apply")
+        applyMethod.invoke(newInstance).asInstanceOf[Map[String, Map[String, Html]]]
+      } catch {
+        case e: Exception => {
+          Logger.error("Error loading Configuration class '%s'. See documentation for correct format.".format(configurationClassName))
+          Map[String, Map[String, Html]]()
+        }
+      }
     }
 
+    configurationLoaded = true
     configurationLoaded
   }
 

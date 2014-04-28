@@ -3,7 +3,7 @@ import de.neuland.play.strawman.StrawmanPlugin
 import play.api._
 import play.api.mvc._
 
-object Global extends GlobalSettings {
+object StrawmanGlobal extends GlobalSettings {
 
   override def onRouteRequest(request: RequestHeader): Option[Handler] = {
 
