@@ -3,6 +3,7 @@ package de.neuland.play.strawman
 import play.api.{Logger, Play}
 import play.api.Play.current
 import play.api.templates.Html
+import play.api.mvc.SimpleResult
 
 object StrawmanPlugin {
 
@@ -25,11 +26,11 @@ object StrawmanPlugin {
       try {
         val newInstance = Play.classloader.loadClass(configurationClassName).newInstance()
         val applyMethod = Play.classloader.loadClass(configurationClassName).getDeclaredMethod("apply")
-        applyMethod.invoke(newInstance).asInstanceOf[Map[String, Map[String, Html]]]
+        applyMethod.invoke(newInstance).asInstanceOf[Map[String, Map[String, SimpleResult]]]
       } catch {
         case e: Exception => {
           Logger.error("Error loading Configuration class '%s'. See documentation for correct format.".format(configurationClassName))
-          Map[String, Map[String, Html]]()
+          Map[String, Map[String, SimpleResult]]()
         }
       }
     }

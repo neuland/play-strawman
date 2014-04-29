@@ -12,7 +12,7 @@ object StrawmanController extends Controller {
 
   def all(url: String) = Action {
     StrawmanConfig.find(url) match {
-      case Some(html) => Ok(html)
+      case Some(result) => result
       case None => {
         Logger.warn("No strawman configuration found for path '%s'. Redirecting to index ...".format(url))
         Redirect("/i")
