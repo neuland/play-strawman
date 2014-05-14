@@ -12,10 +12,10 @@ object StrawmanController extends Controller {
 
   def all(url: String) = Action {
     StrawmanConfig.find(url) match {
-      case Some(result) => result
+      case Some(f) => f()
       case None => {
-        Logger.warn("No strawman configuration found for path '%s'. Redirecting to index ...".format(url))
-        Redirect("/i")
+        Logger.warn("No strawman configuration found for path '%s'. Rendering index ...".format(url))
+        Ok(de.neuland.play.strawman.views.html.index(StrawmanConfig.overview))
       }
     }
   }

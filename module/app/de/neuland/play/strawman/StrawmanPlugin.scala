@@ -26,11 +26,11 @@ object StrawmanPlugin {
       try {
         val newInstance = Play.classloader.loadClass(configurationClassName).newInstance()
         val applyMethod = Play.classloader.loadClass(configurationClassName).getDeclaredMethod("apply")
-        applyMethod.invoke(newInstance).asInstanceOf[Map[String, Map[String, SimpleResult]]]
+        applyMethod.invoke(newInstance).asInstanceOf[Map[String, Map[String, () => SimpleResult]]]
       } catch {
         case e: Exception => {
-          Logger.error("Error loading Configuration class '%s'. See documentation for correct format.".format(configurationClassName))
-          Map[String, Map[String, SimpleResult]]()
+          Logger.error(s"Error loading configuration class '${configurationClassName}'.", e)
+          Map[String, Map[String, () => SimpleResult]]()
         }
       }
     }
