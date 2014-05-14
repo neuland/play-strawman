@@ -38,17 +38,17 @@ import views.{html => h}
 import strawman.{StrawmanRepository => repo}
 import dtos.ProductDto
 
-class StrawmanPages  {
-  def apply: Map[String, Map[String, Html]] = Map(
+class StrawmanPages extends Controller {
+  def apply: Map[String, Map[String, () => SimpleResult]] = Map(
 
     "Articleoverview" -> Map(
-      "/products" -> h.index("Fakeproducts Overview", repo.Product.all)
+      "/products" -> (() => Ok(h.index("Fakeproducts Overview", repo.Product.all)))
     ),
 
     "Articledetails" -> Map(
-      "/product/8844" -> h.detail(repo.Product.cheap),
-      "/product/4233" -> h.detail(repo.Product.expensive),
-      "/product/5555" -> h.detail(ProductDto("5555", "Inline fakeproduct", 10.99))
+      "/product/8844" -> (() => Ok(h.detail(repo.Product.cheap))),
+      "/product/4233" -> (() => Ok(h.detail(repo.Product.expensive))),
+      "/product/5555" -> (() => Ok(h.detail(ProductDto("5555", "Inline fakeproduct", 10.99))))
     )
 
   )
