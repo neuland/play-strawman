@@ -13,7 +13,9 @@ class StrawmanPages extends Controller {
     ),
 
     "Articledetails" -> Map(
-      "/product/8844" -> (() => Ok(h.detail(repo.Product.cheap))),
+      "/product/8844" -> { () =>
+        Ok(h.detail(repo.Product.cheap))
+      },
       "/product/4233" -> (() => Ok(h.detail(repo.Product.expensive))),
       "/product/5555" -> (() => Ok(h.detail(ProductDto("5555", "Inline fakeproduct", 10.99))))
     )

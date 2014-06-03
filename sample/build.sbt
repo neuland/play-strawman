@@ -1,3 +1,5 @@
+import PlayKeys._
+
 name := "neuland-play-plugin-strawman-sample"
 
 version := "1.0"
@@ -8,8 +10,5 @@ organizationName := "neuland bremen GmbH"
 
 organizationHomepage := Some(new URL("http://www.neuland-bfi.de"))
 
-play.Project.playScalaSettings
-
-// sub-project this depends on
-val module = RootProject(file("../module"))
-lazy val application = project.in(file(".")).dependsOn(module)
+lazy val module = project.in(file("module")).enablePlugins(PlayScala)
+lazy val main = project.in(file(".")).enablePlugins(PlayScala).dependsOn(module)
