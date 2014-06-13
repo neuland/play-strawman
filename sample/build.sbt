@@ -1,4 +1,6 @@
+import play.PlayImport.PlayKeys
 import PlayKeys._
+import play.PlayScala
 
 name := "neuland-play-plugin-strawman-sample"
 
@@ -11,4 +13,5 @@ organizationName := "neuland bremen GmbH"
 organizationHomepage := Some(new URL("http://www.neuland-bfi.de"))
 
 lazy val module = project.in(file("module")).enablePlugins(PlayScala)
+
 lazy val main = project.in(file(".")).enablePlugins(PlayScala).dependsOn(module)

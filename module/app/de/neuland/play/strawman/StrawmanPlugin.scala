@@ -1,9 +1,8 @@
 package de.neuland.play.strawman
 
-import play.api.{Logger, Play}
 import play.api.Play.current
-import play.api.templates.Html
 import play.api.mvc.SimpleResult
+import play.api.{Logger, Play}
 
 object StrawmanPlugin {
 
