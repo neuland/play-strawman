@@ -1,12 +1,12 @@
 package strawman
 
-import views.{html => h}
-import strawman.{StrawmanRepository => repo}
 import dtos.ProductDto
-import play.api.mvc.{SimpleResult, Controller}
+import play.api.mvc.{Controller, Result}
+import strawman.{StrawmanRepository => repo}
+import views.{html => h}
 
 class StrawmanPages extends Controller {
-  def apply: Map[String, Map[String, () => SimpleResult]] = Map(
+  def apply: Map[String, Map[String, () => Result]] = Map(
 
     "Articleoverview" -> Map(
       "/products" -> (() => Ok(h.index("Fakeproducts Overview", repo.Product.all)))

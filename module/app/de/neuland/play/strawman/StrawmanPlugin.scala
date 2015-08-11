@@ -1,7 +1,7 @@
 package de.neuland.play.strawman
 
 import play.api.Play.current
-import play.api.mvc.SimpleResult
+import play.api.mvc.Result
 import play.api.{Logger, Play}
 
 object StrawmanPlugin {
@@ -25,11 +25,11 @@ object StrawmanPlugin {
       try {
         val newInstance = Play.classloader.loadClass(configurationClassName).newInstance()
         val applyMethod = Play.classloader.loadClass(configurationClassName).getDeclaredMethod("apply")
-        applyMethod.invoke(newInstance).asInstanceOf[Map[String, Map[String, () => SimpleResult]]]
+        applyMethod.invoke(newInstance).asInstanceOf[Map[String, Map[String, () => Result]]]
       } catch {
         case e: Exception => {
           Logger.error(s"Error loading configuration class '${configurationClassName}'.", e)
-          Map[String, Map[String, () => SimpleResult]]()
+          Map[String, Map[String, () => Result]]()
         }
       }
     }

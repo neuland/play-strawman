@@ -1,8 +1,6 @@
-import play.PlayScala
-
 name := "neuland-play-plugin-strawman"
 
-version := "0.10"
+version := "0.11"
 
 organization := "de.neuland"
 

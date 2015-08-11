@@ -1,7 +1,3 @@
-import play.PlayImport.PlayKeys
-import PlayKeys._
-import play.PlayScala
-
 name := "neuland-play-plugin-strawman-sample"
 
 version := "1.0"
