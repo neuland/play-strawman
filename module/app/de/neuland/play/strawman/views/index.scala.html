@@ -1,4 +1,4 @@
-@(config: Map[String, Set[String]])
+@(config: Map[String, Set[(String, String)]])
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
             <li>@section</li>
             <ul>
                 @for(entrie <- entries) {
-                    <li><a href="@entrie">@entrie</a></li>
+                    <li><a href="@entrie._2">@entrie._1 @entrie._2</a></li>
                 }
             </ul>
         }

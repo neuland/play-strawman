@@ -17,7 +17,7 @@ object StrawmanGlobal extends GlobalSettings {
           case RootPath => Some(StrawmanController.index)
           case "/favicon.ico" => super.onRouteRequest(request)
           case AssetRequest(_) => super.onRouteRequest(request)
-          case _ => Some(StrawmanController.all(request.path))
+          case _ => Some(StrawmanController.all(request.path, request.method))
         }
       case _ => super.onRouteRequest(request)
     }
